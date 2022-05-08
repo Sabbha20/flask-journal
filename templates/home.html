@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroBlog Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+</head>
+<body>
+    <header class="mb-5 pb-5">
+        
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark navbar-fixed-top" style="background-color: #17a2b8 !important; ">
+            <div class="container">
+             
+          
+              <div class="d-flex justify-content-center" style="width: 100%;">
+                <ul class="navbar-nav float-start">
+                    <li class="nav-item m-2 ">
+                       <strong>
+                            <a class="navbar-brand" href="#"><img class="mb-2" src="{{ url_for('static', filename='logo.svg') }}" alt="Microblog Logo">  Microblog</a>
+                          </strong>
+                      
+                      </li>
+                  <li class="nav-item mt-3">
+                    <strong>   <a class="nav-link" href="#">Recent</a> </strong>
+                  </li>
+                  <li class="nav-item mt-3">
+                    <strong>    <a class="nav-link" href="#">Calender</a> </strong>
+                  </li>
+                  
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
+    <main>
+        <div class= "container mt-5 ">
+               <div class="row">
+                   <div class="col-sm-12">
+                    <div class="mb-3">
+                        <h2>Add New Entry</h2>
+                        <form method="POST">
+                            <div class="mb-3">
+                                <h5><label for="exampleFormControlTextarea1" class="form-label">Entry Contents:</label></h5>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="entry"></textarea>
+                              </div>
+                              <div class="d-flex justify-content-end">
+                              <button type="submit" class=" btn btn-info border border-secondary">Add Entry</button> </div>
+                        </form>
+                       </div> 
+                       
+                   </div>
+                   <p class="mt-5"></p>
+                   <div class="col-sm-12 mt-5">
+                    <h1>Recent Posts:</h1>
+                       <div class="card bg-info d-flex">
+                         {% for entry in entries %}
+                        <div class="card m-2" >
+                            <div class="card-body">
+                              <h2 class="card-title"> {{entry[0] | truncate(10, true)}}</h2>
+                              <h6 class="card-subtitle mb-2 text-muted"> <time datetime="{{entry[2]}}">{{entry[1]}}</time></h6>
+                              <p class="card-text">{{entry[0]}}</p>
+                            </div>
+                          </div>
+                          {% endfor %}
+                          <!-- <div class="card mb-2 my-2 mx-2 ">
+                            <div class="card-body">
+                              <h4 class="card-title">Card title</h4>
+                              <h6 class="card-subtitle mb-2 text-muted"><time datetime="12-03-2021">Mar 12, 2021</time></h6>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div> -->
+                          </div>
+                       </div>
+                    <article>
+                        <div>
+                            <h2>
+                               
+                            </h2>
+                           
+                        </div>
+                        <p></p>
+                    </article>
+                   </div>
+               </div>
+        </div>
+        
+    </main>
+
+    <footer class="footer mt-5 pt-5">
+    <nav class="navbar navbar-light bg-dark navbar-fixed-top" style="background-color: #17a2b8 !important; ">    
+        <div class="container">
+        
+            <div class="d-flex justify-content-center" style="width: 100%;">
+          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item">
+                <strong>   <a class="nav-link" href="#">Recent</a> </strong>
+              </li>
+              <li class="nav-item">
+                <strong>    <a class="nav-link" href="#">Calender</a> </strong>
+              </li>
+              <li class="nav-item">
+                <strong>    <a class="nav-link" href="#">About</a> </strong>
+              </li>
+          </ul>
+          </div>
+          <div class="d-flex justify-content-center" style="width: 100%;">
+          <p class="text-center text-white">© 2021 coconut_minds | Made by SABBHA MONDAL</p>
+          </div>
+       
+      </div></nav> </footer>
+</body>
+</html>
