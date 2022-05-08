@@ -3,7 +3,6 @@ import os
 # import sys
 from flask import Flask, render_template, redirect, request, url_for
 from pymongo import MongoClient
-
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -36,8 +35,3 @@ def create_app():
 
     
     return app
-
-
-
-# if __name__=='__main__':
-#     app.run(debug=True)
